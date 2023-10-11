@@ -1,60 +1,62 @@
-# Income Inequality Prediction Project
+# Income Inequality Prediction
 
-This project aims to predict income inequality based on various features and is implemented using machine learning techniques.
+## Description
 
-## Table of Contents
+Income inequality is a growing concern in developing nations worldwide. This project aims to address income inequality by creating a machine learning model to predict whether an individual's income is above or below a certain threshold. The model's accuracy can help policymakers manage and reduce income inequality.
 
-- [Overview](#overview)
-- [Getting Started](#getting-started)
-- [Data](#data)
-- [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
-- [Data Preprocessing](#data-preprocessing)
-- [Model Training and Evaluation](#model-training-and-evaluation)
-- [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
+## Problem Statement
 
-## Overview
+The target feature for prediction is **income_above_limit**, a binary-class variable. The primary evaluation metric is the **F1-score**.
 
-Provide a brief overview of your project. Explain what it does, its goals, and why it's valuable. Include any background information or context.
+## Dataset
 
-## Getting Started
+- The dataset contains various features, including both numeric and categorical ones. Please refer to the data for a detailed description of the columns.
 
-Describe how to get started with your project, including any installation instructions or prerequisites. For example, you can mention the libraries and tools used in the project.
+## Solution Approach
 
-## Data
+### Exploratory Data Analysis (EDA)
 
-Explain the dataset you used in the project. Include details such as the source of the data, its format, and a brief description of the columns.
+- The project begins with an extensive exploratory data analysis to understand the dataset's characteristics.
+- The EDA includes data visualization, statistics, and data cleaning.
 
-## Exploratory Data Analysis (EDA)
+### Data Preprocessing
 
-Share some insights from your EDA. Include visualizations, statistics, or any interesting findings from the data.
+- Handling missing values: Missing values are imputed using the most frequent strategy for specific columns.
+- Encoding categorical variables: Categorical variables are encoded using label encoding.
+- Data splitting: The dataset is split into features (X) and the target (y).
 
-## Data Preprocessing
+### Baseline Modeling
 
-Explain the steps you took to preprocess the data, such as handling missing values, encoding categorical variables, and splitting the data into train and test sets.
+- Logistic Regression is used as a baseline model for income prediction.
+- The model is trained on the training set and evaluated on the test set.
 
-## Model Training and Evaluation
+### Classification Models
 
-Discuss the machine learning models you used, the training process, and how you evaluated the models. Include metrics like F1-score and accuracy.
+- Additional classification models, such as XGBoost, Random Forest, and ExtraTreesClassifier, are explored.
+- The models are trained and evaluated, and their performance is compared based on accuracy and F1-score.
 
-## Results
+## Dependencies
 
-Present the results of your income inequality prediction model. Discuss the model's performance, any challenges you faced, and potential improvements.
+The project relies on the following Python dependencies:
 
-## Contributing
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scikit-learn
+- xgboost
+- autoviz (for exploratory data analysis)
 
-Explain how others can contribute to your project, whether through bug reporting, feature requests, or code contributions.
+Ensure that you have these libraries installed in your Python environment.
 
-## License
+## How to Run
 
-This project is licensed under the [Your License] License - see the [LICENSE.md](LICENSE.md) file for details.
+To replicate this project's results:
 
-## Acknowledgments
+1. Download the dataset from the provided path or use your own dataset.
+2. Execute the Jupyter Notebook containing the project code.
+3. Follow the code cells to perform EDA, data preprocessing, model training, and evaluation.
 
-Mention any sources of inspiration, libraries, or resources you used in your project.
+The project code is self-contained in the provided Jupyter Notebook.
 
----
-
-Feel free to customize the template to suit your project's specific details and needs. Include images, links, and any other relevant information to make your README informative and engaging.
 
