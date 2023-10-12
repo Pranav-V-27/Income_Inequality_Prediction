@@ -1,5 +1,3 @@
-autoviz             0.1.730
-google              NA
 joblib              1.3.2
 matplotlib          3.7.1
 numpy               1.23.5
