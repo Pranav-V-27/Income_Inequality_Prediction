@@ -28,9 +28,9 @@ education_num = st.number_input('Education Num', min_value=0, max_value=16, valu
 #occupation = st.text_input('Occupation')
 #race = st.selectbox('Race', ['White', 'Asian-Pac-Islander', 'Amer-Indian-Eskimo', 'Other', 'Black'])
 #sex = st.selectbox('Sex', ['Female', 'Male'])
-capital_gain = st.number_input('Capital Gain', min_value=0)
-capital_loss = st.number_input('Capital Loss', min_value=0)
-hours_per_week = st.number_input('Hours Per Week', min_value=0)
+#capital_gain = st.number_input('Capital Gain', min_value=0)
+#capital_loss = st.number_input('Capital Loss', min_value=0)
+#hours_per_week = st.number_input('Hours Per Week', min_value=0)
 #native_country = st.text_input('Native Country')
 
 # Create a dictionary with user input data
@@ -42,9 +42,9 @@ user_data = {
    #'occupation': label_encoder.transform([occupation])[0],
    #'race': label_encoder.transform([race])[0],
    #'sex': label_encoder.transform([sex])[0],
-   'capital_gain': capital_gain,
-   'capital_loss': capital_loss,
-   'hours_per_week': hours_per_week,
+   #'capital_gain': capital_gain,
+   #'capital_loss': capital_loss,
+   #'hours_per_week': hours_per_week,
    #'native_country': native_country
 }
 
