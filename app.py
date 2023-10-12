@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 # Load the trained model
-model = joblib.load('classification_models.pkl') 
+model = joblib.load('logistic_regression_model.pkl')  # Change to the correct model file name
 
 # Create title and intro
 st.title('Income Inequality Prediction App')
