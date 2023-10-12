@@ -1,58 +1,61 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 import joblib
+import pandas as pd
 
 # Load the trained model
-model_filename = 'logistic_regression_model.pkl'  
-model = joblib.load(model_filename)
+model = joblib.load('classification_models.pkl') 
 
-# Function to predict income above limit
-def predict_income(data):
-    prediction = model.predict(data)
-    return prediction
-
-# Streamlit app
+# Create title and intro
 st.title('Income Inequality Prediction App')
+st.write("""
+This app predicts whether a person's income will be above the limit based on census data.
+""")
 
-st.write("This app predicts whether an individual's income is above or below a certain threshold.")
+# Get user input 
+st.subheader('User Input Parameters')
 
-# Create input widgets for the features
-pickup_hour = st.number_input('Pickup Hour', min_value=0, max_value=23)
-day_of_week = st.selectbox('Day of the Week', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
-hour_of_accident = st.number_input('Hour of Accident', min_value=0, max_value=23)
-accident_cause = st.text_input('Accident Cause')
-num_vehicles_involved = st.number_input('Number of Vehicles Involved', min_value=1)
-vehicle_type = st.text_input('Vehicle Type')
-driver_age = st.number_input('Driver Age', min_value=0)
-accident_area = st.text_input('Accident Area')
-driving_experience = st.number_input('Driving Experience', min_value=0)
-lanes = st.number_input('Lanes', min_value=1)
+age = st.number_input('Age', min_value=0, max_value=100, value=25)
+workclass = st.selectbox('Work Class', ['Private', 'Self-emp-not-inc', 'Self-emp-inc', 'Federal-gov', 'Local-gov', 'State-gov', 'Without-pay', 'Never-worked'])
+fnlwgt = st.number_input('FNLWGT', min_value=0) 
+education = st.selectbox('Education', ['Bachelors', 'Some-college', '11th', 'HS-grad', 'Prof-school', 'Assoc-acdm', 'Assoc-voc', '9th', '7th-8th', '12th', 'Masters', '1st-4th', '10th', 'Doctorate', '5th-6th', 'Preschool'])
+education_num = st.number_input('Education Num', min_value=0, max_value=16, value=10)
+marital_status = st.selectbox('Marital Status', ['Married-civ-spouse', 'Divorced', 'Never-married', 'Separated', 'Widowed', 'Married-spouse-absent', 'Married-AF-spouse'])
+occupation = st.text_input('Occupation')
+relationship = st.selectbox('Relationship', ['Wife', 'Own-child', 'Husband', 'Not-in-family', 'Other-relative', 'Unmarried'])  
+race = st.selectbox('Race', ['White', 'Asian-Pac-Islander', 'Amer-Indian-Eskimo', 'Other', 'Black'])
+sex = st.selectbox('Sex', ['Female', 'Male'])
+capital_gain = st.number_input('Capital Gain', min_value=0)
+capital_loss = st.number_input('Capital Loss', min_value=0) 
+hours_per_week = st.number_input('Hours Per Week', min_value=0)
+native_country = st.text_input('Native Country')
 
-# Map day of the week to numeric values
-day_mapping = {
-    'Monday': 1,
-    'Tuesday': 2,
-    'Wednesday': 3,
-    'Thursday': 4,
-    'Friday': 5,
-    'Saturday': 6,
-    'Sunday': 7
+# Create feature dictionary    
+user_data = {
+    'age': age,
+    'workclass': workclass,
+    'fnlwgt': fnlwgt,
+    'education': education,
+    'education_num': education_num,
+    'marital_status': marital_status,
+    'occupation': occupation,  
+    'relationship': relationship,
+    'race': race,
+    'sex': sex,
+    'capital_gain': capital_gain,
+    'capital_loss': capital_loss,
+    'hours_per_week': hours_per_week,
+    'native_country': native_country
 }
-day_of_week = day_mapping.get(day_of_week, 0)
 
-# Create a feature vector from user inputs
-input_data = np.array([pickup_hour, day_of_week, hour_of_accident, accident_cause, num_vehicles_involved, vehicle_type,
-                      driver_age, accident_area, driving_experience, lanes]).reshape(1, -1)
+# Transform into DataFrame
+features = pd.DataFrame(user_data, index=[0])
 
-# Predict the income status
-if st.button('Predict Income Status'):
-    prediction = predict_income(input_data)
-    if prediction[0] == 1:
-        st.write("Predicted Income Status: Above Limit")
-    else:
-        st.write("Predicted Income Status: Below Limit")
+# Make prediction
+prediction = model.predict(features)
 
-st.sidebar.markdown("### Project Information")
-st.sidebar.write("This app is a part of the Income Inequality Prediction project.")
-st.sidebar.write("For more details, visit the project's repository on GitHub.")
+# Output prediction
+st.subheader('Prediction')
+if prediction[0] == 1:
+  st.write('Income will likely be above the limit')
+else:
+  st.write('Income will likely not be above the limit')
