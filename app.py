@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
 # Load the trained model
-model = joblib.load(r'Model/logistic_regression_model.pkl')
+model = ('Model/logistic_regression_model.pkl')
 
 def label_encoder(input_val, feats): 
     feat_val = list(1+np.arange(len(feats)))
