@@ -5,6 +5,8 @@ from prediction_template import get_prediction, label_encoder
 
 # Load the trained model
 model = joblib.load('Model/logistic_regression_model.pkl')
+except Exception as e:
+    st.error(f"Error loading the model: {str(e)}")
 
 # Load the label encoders for categorical features
 label_encoders = {
