@@ -1,46 +1,36 @@
-# Import necessary libraries 
 import streamlit as st
+import joblib
 import pandas as pd
-import numpy as np
 
-# Add title to the app
-st.title('App Template')
+# Load the trained model
+model = joblib.load('model.pkl')  # Change to the correct model file name
 
-# Add a brief introduction for the app
+# Create title and intro
+st.title('Your App Title')
 st.write("""
-This is a template Streamlit app that can be used as a starting point for building your own apps.
+This app does something amazing based on your input.
 """)
 
-# Input widgets 
-# Take user inputs using widgets like text boxes, sliders, radio buttons etc.
+# Get user input 
+st.subheader('User Input Parameters')
 
-name = st.text_input('Name')
-age = st.slider('Age', 1, 100, 25)
-gender = st.radio('Gender', ['Male', 'Female'])
+# Define input elements here (e.g., number_input, selectbox, text_input)
 
-# Processing
-# Use the input variables for any processing or calculations required
-
-if gender=='Male':
-    st.write('Hello Mr.', name)
-else:
-    st.write('Hello Ms.', name)
-    
-# Display outputs
-# Display the outputs in text, tables, charts, plots etc. 
-
-st.write('Your age is:', age)
-
-# Visualizations
-# Add any charts or plots using pandas, matplotlib etc.
-
-data = {
-    'first column': [1, 2, 3, 4],
-    'second column': [10, 20, 30, 40]
+# Create feature dictionary    
+user_data = {
+    # Map input elements to feature names
 }
-df = pd.DataFrame(data)
-st.line_chart(df)
 
-# Run the app   
-if __name__ == '__main__':
-    main()
+# Transform into DataFrame
+features = pd.DataFrame(user_data, index=[0])
+
+# Make prediction
+prediction = model.predict(features)
+
+# Output prediction
+st.subheader('Prediction')
+
+if prediction[0] == 1:
+    st.write('Positive Prediction')
+else:
+    st.write('Negative Prediction')
