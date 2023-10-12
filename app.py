@@ -15,8 +15,8 @@ warnings.filterwarnings('ignore')
 pd.pandas.set_option('display.max_columns',None)
 
 # Import the autoviz library
-!pip install autoviz
-from autoviz.AutoViz_Class import AutoViz_Class
+#!pip install autoviz
+#from autoviz.AutoViz_Class import AutoViz_Class
 
 # Define the title of the app
 st.title("Data Analysis and Machine Learning App")
@@ -30,8 +30,7 @@ data_file = st.sidebar.file_uploader("Upload your data file", type=["csv"])
 # Define a text input for the target variable name
 target_variable = st.sidebar.text_input("Enter the name of the target variable")
 
-# Define a checkbox for running the autoviz report
-run_autoviz = st.sidebar.checkbox("Run AutoViz report")
+
 
 # Define a checkbox for running the logistic regression model
 run_logistic = st.sidebar.checkbox("Run Logistic Regression model")
