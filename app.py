@@ -9,12 +9,13 @@ model = 'Model/logistic_regression_model.pkl'
 # Load label encoder 
 #encoder = 'Model/label_encoder.pkl'
 from sklearn.preprocessing import LabelEncoder
-def encoder(input_val, feats): 
-    feat_val = list(1 + np.arange(len(feats))
+def encoder(input_val, feats):
+    feat_val = list(1 + np.arange(len(feats)))
     feat_key = feats
     feat_dict = dict(zip(feat_key, feat_val))
     value = feat_dict[input_val]
     return value
+
 
 
 st.title('Income Inequality Prediction')
