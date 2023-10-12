@@ -27,7 +27,7 @@ gender = st.selectbox('Gender', ['Female', 'Male'])
 gains = st.number_input('Capital Gain', min_value=0)
 losses = st.number_input('Capital Loss', min_value=0) 
 #hours_per_week = st.number_input('Hours Per Week', min_value=0)
-citizenship = st.text_input('citizenship')
+#citizenship = st.text_input('citizenship')
 
 # Create feature dictionary    
 user_data = {
@@ -42,7 +42,7 @@ user_data = {
     'capital_gain': gains,
     'capital_loss': losses,
     #'hours_per_week': hours_per_week,
-    'citizenship': citizenship
+    #'citizenship': citizenship
 }
 
 # Transform into DataFrame
