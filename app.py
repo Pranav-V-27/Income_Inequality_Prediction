@@ -49,8 +49,8 @@ df = user_input_features()
 
 # Encoding categorical data
 for col in ['workclass', 'education', 'marital_status', 'occupation', 'relationship', 'race', 'sex', 'native_country']:
-    df[col] = encoder.transform(df[col]) 
-
+    df[col] = encoder.fit_transform(df[col]) 
+    
 # Predict    
 prediction = model.predict(df)
 
