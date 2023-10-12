@@ -87,8 +87,15 @@ features = pd.DataFrame(user_data, index=[0])
 # Make prediction
 prediction = model.predict(features)
 
-# Output prediction
-       
+# Transform into DataFrame
+features = pd.DataFrame(user_data, index=[0])
 
-            if __name__ == '__main__':
-    main()
+# Make prediction
+prediction = model.predict(features)
+
+# Output prediction
+st.subheader('Prediction')
+if prediction[0] == 1:
+    st.write('Income will likely be above the limit')
+else:
+    st.write('Income will likely not be above the limit')
