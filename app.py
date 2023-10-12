@@ -28,7 +28,7 @@ train_copy = train.copy()
 train_copy.columns = train_copy.columns
 
 for col in train_copy.columns:
-  if col in 'ID', 'gender', 'education', 'class', 'education_institute',
+  if col in ['ID', 'gender', 'education', 'class', 'education_institute',
        'marital_status', 'race', 'is_hispanic', 'employment_commitment',
        'unemployment_reason', 'is_labor_union', 'industry_code_main',
        'occupation_code_main', 'household_stat', 'household_summary',
