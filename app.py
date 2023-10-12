@@ -48,11 +48,18 @@ user_data = {
    #'native_country': native_country
 }
 
-# Convert user input data into a DataFrame
-user_data_df = pd.DataFrame(user_data, index=[0])
 
-# Make prediction using the get_prediction function
-prediction = get_prediction(user_data_df, model, label_encoders)
+# Transform into DataFrame
+features = pd.DataFrame(user_data, index=[0])
+
+# Make prediction
+prediction = model.predict(features)
+
+# Transform into DataFrame
+features = pd.DataFrame(user_data, index=[0])
+
+# Make prediction
+prediction = model.predict(features)
 
 # Output prediction
 st.subheader('Prediction')
