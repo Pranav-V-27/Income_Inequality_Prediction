@@ -6,7 +6,7 @@ from prediction_template import get_prediction, label_encoder
 
 # Load the trained model
 try:
-    model = '.Model/logistic_regression_model.pkl'
+    model = 'Model/logistic_regression_model.pkl'
 except Exception as e:
     st.error(f"Error loading the model: {str(e)}")
 
