@@ -3,10 +3,10 @@ import pandas as pd
 import joblib
 
 # Load model
-model = joblib.load(r'Model/logistic_regression_model.pkl')
+model = 'Model/logistic_regression_model.pkl'
 
 # Load label encoder 
-encoder = joblib.load(r'Model/label_encoder.pkl')
+encoder = 'Model/label_encoder.pkl'
 
 st.title('Income Inequality Prediction')
 
