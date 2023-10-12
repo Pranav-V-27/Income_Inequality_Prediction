@@ -33,7 +33,7 @@ sex = st.selectbox('Sex', ['Female', 'Male'])
 capital_gain = st.number_input('Capital Gain', min_value=0)
 capital_loss = st.number_input('Capital Loss', min_value=0)
 hours_per_week = st.number_input('Hours Per Week', min_value=0)
-native_country = st.text_input('Native Country')
+#native_country = st.text_input('Native Country')
 
 # Apply LabelEncoder to categorical features
 label_encoder = ('Model/label_encoder.pkl')
@@ -48,7 +48,7 @@ user_data = {
     'capital_gain': capital_gain,
     'capital_loss': capital_loss,
     'hours_per_week': hours_per_week,
-    'native_country': native_country
+    #'native_country': native_country
 }
 
 # Transform into DataFrame
