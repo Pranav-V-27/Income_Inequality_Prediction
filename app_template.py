@@ -6,7 +6,7 @@ import pandas as pd
 model = joblib.load('logistic_regression_model.pkl')  # Change to the correct model file name
 
 # Create title and intro
-st.title('Your App Title')
+st.title('Income Inequality Prediction App')
 st.write("""
 This app does something amazing based on your input.
 """)
