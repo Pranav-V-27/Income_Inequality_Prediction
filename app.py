@@ -39,7 +39,7 @@ hours_per_week = st.number_input('Hours Per Week', min_value=0)
 #label_encoder = ('Model/label_encoder.pkl')
 user_data = {
    'age': age,
-   'education': label_encoder.transform([education])[0],  # Corrected this line
+   #'education': label_encoder.transform([education])[0],  # Corrected this line
     'education_num': education_num,
     'marital_status': label_encoder.transform([marital_status])[0],
     'occupation': label_encoder.transform([occupation])[0],
