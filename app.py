@@ -33,9 +33,9 @@ native_country = st.text_input('Native Country')
 label_encoder = ('Model/label_encoder.pkl')
 user_data = {
    'age': age,
-    'education': label_encoder.transform([education])[0],  # Corrected this line
+    'education': LabelEncoder.transform([education])[0],  # Corrected this line
     'education_num': education_num,
-    'marital_status': label_encoder.transform([marital_status])[0],
+    'marital_status': LabelEncoder.transform([marital_status])[0],
     'occupation': label_encoder.transform([occupation])[0],
     'race': label_encoder.transform([race])[0],
     'sex': label_encoder.transform([sex])[0],
