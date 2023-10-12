@@ -20,7 +20,7 @@ fnlwgt = st.number_input('FNLWGT', min_value=0)
 education = st.selectbox('Education', ['Bachelors', 'Some-college', '11th', 'HS-grad', 'Prof-school', 'Assoc-acdm', 'Assoc-voc', '9th', '7th-8th', '12th', 'Masters', '1st-4th', '10th', 'Doctorate', '5th-6th', 'Preschool'])
 education_num = st.number_input('Education Num', min_value=0, max_value=16, value=10)
 marital_status = st.selectbox('Marital Status', ['Married-civ-spouse', 'Divorced', 'Never-married', 'Separated', 'Widowed', 'Married-spouse-absent', 'Married-AF-spouse'])
-occupation = st.text_input('Occupation')
+# occupation = st.text_input('Occupation')
 relationship = st.selectbox('Relationship', ['Wife', 'Own-child', 'Husband', 'Not-in-family', 'Other-relative', 'Unmarried'])  
 race = st.selectbox('Race', ['White', 'Asian-Pac-Islander', 'Amer-Indian-Eskimo', 'Other', 'Black'])
 sex = st.selectbox('Sex', ['Female', 'Male'])
@@ -37,7 +37,6 @@ user_data = {
     'education': education,
     'education_num': education_num,
     'marital_status': marital_status,
-    'occupation': occupation,  
     'relationship': relationship,
     'race': race,
     'sex': sex,
@@ -51,7 +50,7 @@ user_data = {
 features = pd.DataFrame(user_data, index=[0])
 
 # Make prediction
-prediction = model.predict(features)
+prediction = model.predict('features')
 
 # Output prediction
 st.subheader('Prediction')
