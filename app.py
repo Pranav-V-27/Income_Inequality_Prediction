@@ -15,7 +15,7 @@ This app predicts whether a person's income will be above the limit based on cen
 st.subheader('User Input Parameters')
 
 age = st.number_input('Age', min_value=0, max_value=100, value=25)
-workclass = st.selectbox('Work Class', ['Private', 'Self-emp-not-inc', 'Self-emp-inc', 'Federal-gov', 'Local-gov', 'State-gov', 'Without-pay', 'Never-worked'])
+#workclass = st.selectbox('Work Class', ['Private', 'Self-emp-not-inc', 'Self-emp-inc', 'Federal-gov', 'Local-gov', 'State-gov', 'Without-pay', 'Never-worked'])
 education = st.selectbox('Education', ['Bachelors', 'Some-college', '11th', 'HS-grad', 'Prof-school', 'Assoc-acdm', 'Assoc-voc', '9th', '7th-8th', '12th', 'Masters', '1st-4th', '10th', 'Doctorate', '5th-6th', 'Preschool'])
 education_num = st.number_input('Education Num', min_value=0, max_value=16, value=10)
 marital_status = st.selectbox('Marital Status', ['Married-civ-spouse', 'Divorced', 'Never-married', 'Separated', 'Widowed', 'Married-spouse-absent', 'Married-AF-spouse'])
@@ -32,7 +32,7 @@ label_encoder = 'Model/label_encoder.pkl'
 
 user_data = {
     'age': age,
-    'workclass': label_encoder.transform([workclass])[0],
+    #'workclass': label_encoder.transform([workclass])[0],
     'education': label_encoder.transform([education])[0],
     'education_num': education_num,
     'marital_status': label_encoder.transform([marital_status])[0],
