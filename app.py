@@ -8,11 +8,11 @@ model = 'Model/logistic_regression_model.pkl'
 
 # Load the label encoders for categorical features
 label_encoders = {
-    'education': joblib.load('Model/education_label_encoder.pkl'),
-    'marital_status': joblib.load('Model/marital_status_label_encoder.pkl'),
-    'occupation': joblib.load('Model/occupation_label_encoder.pkl'),
-    'race': joblib.load('Model/race_label_encoder.pkl'),
-    'sex': joblib.load('Model/sex_label_encoder.pkl')
+    'education': ('Model/education_label_encoder.pkl'),
+    'marital_status': ('Model/marital_status_label_encoder.pkl'),
+    'occupation': ('Model/occupation_label_encoder.pkl'),
+    'race': ('Model/race_label_encoder.pkl'),
+    'sex': ('Model/sex_label_encoder.pkl')
 }
 
 # Create title and intro
