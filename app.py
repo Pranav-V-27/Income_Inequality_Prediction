@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
 # Load the trained model
-model = joblib.load('Model/logistic_regression_model.pkl')
+model = ('Model/logistic_regression_model.pkl')
 
 
 # Create title and intro
