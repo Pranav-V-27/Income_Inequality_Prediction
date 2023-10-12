@@ -1,6 +1,7 @@
 import streamlit as st
 import joblib
 import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 
 # Load the trained model
 model = joblib.load('Model/logistic_regression_model.pkl')
