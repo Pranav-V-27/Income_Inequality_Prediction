@@ -46,13 +46,13 @@ user_data = {
 }
 
 # Transform into DataFrame
-features = pd.DataFrame ((np.array(user_data, index=[0]))
+features = pd.DataFrame(user_data, index=[0])
 
 # Make prediction
 prediction = model.predict(features)
 
 # Output prediction
-st.subheader(prediction)
+st.subheader('Prediction')
 if prediction[0] == 1:
     st.write('Income will likely be above the limit')
 else:
