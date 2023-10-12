@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 # Load model
-model = joblib.load('logistic_regression_model.pkl')
+model = joblib.load(r'Model/logistic_regression_model.pkl')
 
 # Load label encoder 
 encoder = joblib.load('label_encoder.pkl')
