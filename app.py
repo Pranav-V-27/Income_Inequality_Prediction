@@ -55,12 +55,6 @@ features = pd.DataFrame(user_data, index=[0])
 # Make prediction
 prediction = model.predict(features)
 
-# Transform into DataFrame
-features = pd.DataFrame(user_data, index=[0])
-
-# Make prediction
-prediction = model.predict(features)
-
 # Output prediction
 st.subheader('Prediction')
 if prediction[0] == 1:
