@@ -6,7 +6,7 @@ import joblib
 model = joblib.load(r'Model/logistic_regression_model.pkl')
 
 # Load label encoder 
-encoder = joblib.load('label_encoder.pkl')
+encoder = joblib.load(r'Model/label_encoder.pkl')
 
 st.title('Income Inequality Prediction')
 
