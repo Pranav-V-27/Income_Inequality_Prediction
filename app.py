@@ -4,9 +4,15 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
 # Load the trained model
-model = ('Model/logistic_regression_model.pkl')
+model = joblib.load(r'Model/logistic_regression_model.pkl')
 
-
+def label_encoder(input_val, feats): 
+    feat_val = list(1+np.arange(len(feats)))
+    feat_key = feats
+    feat_dict = dict(zip(feat_key, feat_val))
+    value = feat_dict[input_val]
+    return value
+   
 # Create title and intro
 st.title('Income Inequality Prediction App')
 st.write("""
@@ -33,9 +39,9 @@ native_country = st.text_input('Native Country')
 label_encoder = ('Model/label_encoder.pkl')
 user_data = {
    'age': age,
-    'education': LabelEncoder.transform([education])[0],  # Corrected this line
+    'education': label_encoder.transform([education])[0],  # Corrected this line
     'education_num': education_num,
-    'marital_status': LabelEncoder.transform([marital_status])[0],
+    'marital_status': label_encoder.transform([marital_status])[0],
     'occupation': label_encoder.transform([occupation])[0],
     'race': label_encoder.transform([race])[0],
     'sex': label_encoder.transform([sex])[0],
