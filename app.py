@@ -1,50 +1,84 @@
 import streamlit as st
-import joblib
 import pandas as pd
+import numpy as np
+# import joblib
+from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.preprocessing import LabelEncoder
+import random
+from sklearn.impute import SimpleImputer
+# import zipfile
 
-# Load the trained model
-model = 'Model/logistic_regression_model.pkl'
+# with zipfile.ZipFile("./Model/exc.zip") as zip:
+#     with zip.open("content/ExtraTreesClassifier.joblib") as myZip:
+#         model = joblib.load(myZip)
+# model = joblib.load(r'Model/ExtraTreesClassifier.joblib')
+def label_encoder(input_val, feats): 
+    feat_val = list(1+np.arange(len(feats)))
+    feat_key = feats
+    feat_dict = dict(zip(feat_key, feat_val))
+    value = feat_dict[input_val]
+    return value
+model = '.Model/logistic_regression_model.pkl'
 
-# Create title and intro
-st.title('Income Inequality Prediction App')
-st.write("""
-This app predicts whether a person's income will be above the limit based on census data.
-""")
+train =  pd.read_csv(".Dataset/project_2_data.csv")
+train_copy = train.copy()
+#SI = SimpleImputer(strategy="most_frequent")
+#train_copy = pd.DataFrame(SI.fit_transform(train_copy))
 
-# Get user input
-st.subheader('User Input Parameters')
+train_copy.columns = train_copy.columns
 
+for col in train_copy.columns:
+  if col in 'ID', 'gender', 'education', 'class', 'education_institute',
+       'marital_status', 'race', 'is_hispanic', 'employment_commitment',
+       'unemployment_reason', 'is_labor_union', 'industry_code_main',
+       'occupation_code_main', 'household_stat', 'household_summary',
+       'under_18_family', 'veterans_admin_questionnaire', 'tax_status',
+       'citizenship', 'country_of_birth_own', 'country_of_birth_father',
+       'country_of_birth_mother', 'migration_code_change_in_msa',
+       'migration_prev_sunbelt', 'migration_code_move_within_reg',
+       'migration_code_change_in_reg', 'residence_1_year_ago',
+       'old_residence_reg', 'old_residence_state', 'income_above_limit']:
+    continue
+  le = LabelEncoder()
+  train_copy[col] = le.fit_transform(train_copy[col])
+
+model.fit(train_copy.iloc[:,:-1], train_copy.iloc[:,-1])
+
+st.set_page_config(page_title="Income Inequality Prediction App",
+                   page_icon="$$", layout="wide")
+
+#creating option list for dropdown menu
 age = st.number_input('Age', min_value=0, max_value=100, value=25)
 workclass = st.selectbox('Work Class', ['Private', 'Self-emp-not-inc', 'Self-emp-inc', 'Federal-gov', 'Local-gov', 'State-gov', 'Without-pay', 'Never-worked'])
-fnlwgt = st.number_input('FNLWGT', min_value=0)
+#fnlwgt = st.number_input('FNLWGT', min_value=0)
 education = st.selectbox('Education', ['Bachelors', 'Some-college', '11th', 'HS-grad', 'Prof-school', 'Assoc-acdm', 'Assoc-voc', '9th', '7th-8th', '12th', 'Masters', '1st-4th', '10th', 'Doctorate', '5th-6th', 'Preschool'])
 education_num = st.number_input('Education Num', min_value=0, max_value=16, value=10)
 marital_status = st.selectbox('Marital Status', ['Married-civ-spouse', 'Divorced', 'Never-married', 'Separated', 'Widowed', 'Married-spouse-absent', 'Married-AF-spouse'])
-occupation = st.text_input('Occupation')
-relationship = st.selectbox('Relationship', ['Wife', 'Own-child', 'Husband', 'Not-in-family', 'Other-relative', 'Unmarried'])
+occupation_code_main = st.text_input('occupation_code_main')
+#relationship = st.selectbox('Relationship', ['Wife', 'Own-child', 'Husband', 'Not-in-family', 'Other-relative', 'Unmarried'])
 race = st.selectbox('Race', ['White', 'Asian-Pac-Islander', 'Amer-Indian-Eskimo', 'Other', 'Black'])
-sex = st.selectbox('Sex', ['Female', 'Male'])
-capital_gain = st.number_input('Capital Gain', min_value=0)
-capital_loss = st.number_input('Capital Loss', min_value=0)
-hours_per_week = st.number_input('Hours Per Week', min_value=0)
-native_country = st.text_input('Native Country')
+gender = st.selectbox('Sex', ['Female', 'Male'])
+gains = st.number_input('Capital Gain', min_value=0)
+losses = st.number_input('Capital Loss', min_value=0)
+#hours_per_week = st.number_input('Hours Per Week', min_value=0)
+#native_country = st.text_input('Native Country')
 
 # Create feature dictionary
 user_data = {
     'age': age,
-    'workclass': workclass,
-    'fnlwgt': fnlwgt,
-    'education': education,
+    'workclass': LabelEncoder(workclass),
+    #'fnlwgt': fnlwgt,
+    'education': LabelEncoder(education),
     'education_num': education_num,
-    'marital_status': marital_status,
-    'occupation': occupation,
-    'relationship': relationship,
-    'race': race,
-    'sex': sex,
-    'capital_gain': capital_gain,
-    'capital_loss': capital_loss,
-    'hours_per_week': hours_per_week,
-    'native_country': native_country
+    'marital_status': LabelEncoder(marital_status),
+    'occupation': LabelEncoder(occupation_code_main),
+    #'relationship': relationship,
+    'race': LabelEncoder(race),
+    'sex': LabelEncoder(gender),
+    'capital_gain': gains,
+    'capital_loss': losses,
+    #'hours_per_week': hours_per_week,
+    #'native_country': native_country
 }
 
 # Transform into DataFrame
@@ -54,8 +88,7 @@ features = pd.DataFrame(user_data, index=[0])
 prediction = model.predict(features)
 
 # Output prediction
-st.subheader('Prediction')
-if prediction[0] == 1:
-    st.write('Income will likely be above the limit')
-else:
-    st.write('Income will likely not be above the limit')
+       
+
+            if __name__ == '__main__':
+    main()
