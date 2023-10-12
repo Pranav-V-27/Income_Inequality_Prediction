@@ -35,7 +35,7 @@ hours_per_week = st.number_input('Hours Per Week', min_value=0)
 # Create a dictionary with user input data
 user_data = {
    'age': age,
-   'education': label_encoder.transform([education])[0],  # Corrected this line
+   'education': label_encoder.transform([education])['Bachelors', 'Some-college', '11th', 'HS-grad', 'Prof-school', 'Assoc-acdm', 'Assoc-voc', '9th', '7th-8th', '12th', 'Masters', '1st-4th', '10th', 'Doctorate', '5th-6th', 'Preschool'],  # Corrected this line
    'education_num': education_num,
    'marital_status': label_encoder.transform([marital_status])[0],
    'occupation': label_encoder.transform([occupation])[0],
