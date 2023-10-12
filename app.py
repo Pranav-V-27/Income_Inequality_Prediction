@@ -10,13 +10,6 @@ except Exception as e:
     st.error(f"Error loading the model: {str(e)}")
 
 # Load the label encoders for categorical features
-label_encoders = {
-    'education': joblib.load('Model/education_label_encoder.pkl'),
-    'marital_status': joblib.load('Model/marital_status_label_encoder.pkl'),
-    'occupation': joblib.load('Model/occupation_label_encoder.pkl'),
-    'race': joblib.load('Model/race_label_encoder.pkl'),
-    'sex': joblib.load('Model/sex_label_encoder.pkl')
-}
 
 # Create title and intro
 st.title('Income Inequality Prediction App')
@@ -41,17 +34,17 @@ hours_per_week = st.number_input('Hours Per Week', min_value=0)
 
 # Create a dictionary with user input data
 user_data = {
-    'age': age,
-    'education': education,
-    'education_num': education_num,
-    'marital_status': marital_status,
-    'occupation': occupation,
-    'race': race,
-    'sex': sex,
-    'capital_gain': capital_gain,
-    'capital_loss': capital_loss,
-    'hours_per_week': hours_per_week,
-    #'native_country': native_country
+   'age': age,
+   'education': label_encoder.transform([education])[0],  # Corrected this line
+   'education_num': education_num,
+   'marital_status': label_encoder.transform([marital_status])[0],
+   'occupation': label_encoder.transform([occupation])[0],
+   'race': label_encoder.transform([race])[0],
+   'sex': label_encoder.transform([sex])[0],
+   'capital_gain': capital_gain,
+   'capital_loss': capital_loss,
+   'hours_per_week': hours_per_week,
+   #'native_country': native_country
 }
 
 # Convert user input data into a DataFrame
