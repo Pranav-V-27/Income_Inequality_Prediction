@@ -30,7 +30,7 @@ hours_per_week = st.number_input('Hours Per Week', min_value=0)
 native_country = st.text_input('Native Country')
 
 # Apply LabelEncoder to categorical features
-label_encoder = joblib.load('Model/label_encoder.pkl')
+label_encoder = ('Model/label_encoder.pkl')
 user_data = {
    'age': age,
     'education': label_encoder.transform([education])[0],  # Corrected this line
