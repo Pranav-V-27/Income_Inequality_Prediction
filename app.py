@@ -52,7 +52,7 @@ features = pd.DataFrame ((np.array(user_data, index=[0]))
 prediction = model.predict(features)
 
 # Output prediction
-st.subheader('Prediction')
+st.subheader(prediction)
 if prediction[0] == 1:
     st.write('Income will likely be above the limit')
 else:
