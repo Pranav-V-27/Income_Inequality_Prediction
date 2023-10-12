@@ -46,7 +46,7 @@ user_data = {
 }
 
 # Transform into DataFrame
-features = pd.DataFrame(user_data, index=[0])
+features = pd.DataFrame ((np.array(user_data, index=[0]))
 
 # Make prediction
 prediction = model.predict(features)
