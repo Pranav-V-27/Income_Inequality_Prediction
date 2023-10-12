@@ -4,7 +4,8 @@ import pandas as pd
 from prediction_template import get_prediction, label_encoder
 
 # Load the trained model
-model = joblib.load('Model/logistic_regression_model.pkl')
+try:
+    model = joblib.load('Model/logistic_regression_model.pkl')
 except Exception as e:
     st.error(f"Error loading the model: {str(e)}")
 
