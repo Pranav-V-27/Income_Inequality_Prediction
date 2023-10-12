@@ -33,21 +33,18 @@ losses = st.number_input('Capital Loss', min_value=0)
 # Create feature dictionary    
 user_data = {
     'age': age,
-    'workclass': workclass,
-    'fnlwgt': fnlwgt,
+    #'workclass': class,
     'education': education,
-    'education_num': education_num,
+    #'education_num': education_num,
     'marital_status': marital_status,
-    'occupation': occupation,  
-    'relationship': relationship,
+    #'relationship': relationship,
     'race': race,
-    'sex': sex,
-    'capital_gain': capital_gain,
-    'capital_loss': capital_loss,
-    'hours_per_week': hours_per_week,
-    'native_country': native_country
+    'sex': gender,
+    'capital_gain': gains,
+    'capital_loss': losses,
+    #'hours_per_week': hours_per_week,
+    #'citizenship': citizenship
 }
-
 # Transform into DataFrame
 features = pd.DataFrame(user_data, index=[0])
 
